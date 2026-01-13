@@ -1,21 +1,39 @@
+// app/request/page.tsx
+
 "use client"
 
 import Navbar from "@/components/Navbar"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { getRequests, saveRequests } from "@/lib/fakeDB"
 
 export default function Request() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [level, setLevel] = useState("")
+  const [subject, setSubject] = useState("")
+  const [problem, setProblem] = useState("")
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
 
-    // simulasi kirim data (nanti bisa ganti ke API)
+    const db = getRequests()
+
+    db.push({
+      id: Date.now(),
+      level,
+      subject,
+      problem,
+      status: "open",
+      createdAt: new Date().toISOString()
+    })
+
+    saveRequests(db)
+
     setTimeout(() => {
-      router.push("/kelas")
-    }, 800)
+      router.push("/dashboard")
+    }, 500)
   }
 
   return (
@@ -27,25 +45,31 @@ export default function Request() {
 
         <input
           required
-          className="border border-slate-300 rounded-lg p-3 w-full mb-4"
+          className="border rounded-lg p-3 w-full mb-4"
           placeholder="Jenjang"
+          value={level}
+          onChange={e => setLevel(e.target.value)}
         />
 
         <input
           required
-          className="border border-slate-300 rounded-lg p-3 w-full mb-4"
+          className="border rounded-lg p-3 w-full mb-4"
           placeholder="Mata Pelajaran"
+          value={subject}
+          onChange={e => setSubject(e.target.value)}
         />
 
         <textarea
           required
-          className="border border-slate-300 rounded-lg p-3 w-full mb-6"
+          className="border rounded-lg p-3 w-full mb-6"
           placeholder="Kesulitan belajar..."
+          value={problem}
+          onChange={e => setProblem(e.target.value)}
         />
 
         <button
           disabled={loading}
-          className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white w-full py-3 rounded-xl transition"
+          className="bg-indigo-600 text-white w-full py-3 rounded-xl"
         >
           {loading ? "Mengirim..." : "Kirim Request"}
         </button>

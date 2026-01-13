@@ -1,3 +1,5 @@
+// app/kelas/detail/page.jsx
+
 import Navbar from "@/components/Navbar"
 
 export default function Detail() {
