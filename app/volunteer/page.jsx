@@ -10,7 +10,7 @@ export default function Volunteer() {
           Volunteer adalah individu yang secara sukarela terlibat dalam kegiatan sosial, pendidikan, kemanusiaan, dan lingkungan tanpa mengharapkan imbalan materi.
 Tujuan utama volunteer adalah membantu masyarakat dan memberikan dampak positif bagi lingkungan sekitar.
         </p>
-        <a href="/volunteer/daftar" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl">
+        <a href="/dashboard/volunteer/register" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl">
           Daftar Menjadi Volunteer
         </a>
       </div>
