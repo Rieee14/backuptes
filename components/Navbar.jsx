@@ -16,9 +16,9 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-8">
           <Link href="/" className="text-slate-700 hover:text-indigo-600">Beranda</Link>
           <Link href="/kelas" className="text-slate-700 hover:text-indigo-600">Kelas</Link>
-          <Link href="/request" className="text-slate-700 hover:text-indigo-600">Request Kelas</Link>
+          <Link href="/kelas_terdaftar" className="text-slate-700 hover:text-indigo-600">My Class</Link>
           <Link href="/volunteer" className="text-slate-700 hover:text-indigo-600">Volunteer</Link>
-          <Link href="/tentang" className="text-slate-700 hover:text-indigo-600">Tentang Kami</Link>
+          <Link href="/tentang_kami" className="text-slate-700 hover:text-indigo-600">Tentang Kami</Link>
           <Link href="/volunteer/daftar"
             className="bg-indigo-600 hover:bg-indigo-700 transition text-white px-5 py-2 rounded-xl">
             Gabung Volunteer

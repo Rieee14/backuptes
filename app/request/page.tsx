@@ -32,7 +32,7 @@ export default function Request() {
     saveRequests(db)
 
     setTimeout(() => {
-      router.push("/dashboard")
+      router.push("/kelas")
     }, 500)
   }
 

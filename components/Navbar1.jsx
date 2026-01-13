@@ -15,7 +15,7 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           <Link href="/dashboard/volunteer" className="text-slate-700 hover:text-indigo-600">Beranda</Link>
-          <Link href="/dashboard" className="text-slate-700 hover:text-indigo-600">class</Link>
+          <Link href="/class" className="text-slate-700 hover:text-indigo-600">class</Link>
           <Link href="/take" className="text-slate-700 hover:text-indigo-600">take class</Link>
           <Link href="/tentang" className="text-slate-700 hover:text-indigo-600">Tentang Kami</Link>
           <Link href="/volunteer/daftar"

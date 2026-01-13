@@ -1,15 +1,19 @@
+// app/kelas/page.tsx
+
 "use client"
 
 import Navbar from "@/components/Navbar"
 import ClassCard from "@/components/ClassCard"
 import { useEffect, useState } from "react"
 import { getClasses } from "@/lib/fakeDB"
+import { getAvailableClasses } from "@/lib/fakeDB" 
+import link from "next/link"
 
 export default function Kelas() {
   const [classes, setClasses] = useState([])
 
   useEffect(() => {
-    setClasses(getClasses())
+    setClasses(getAvailableClasses())
   }, [])
 
   return (
