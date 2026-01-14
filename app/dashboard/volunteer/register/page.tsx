@@ -5,10 +5,19 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { registerVolunteer } from "@/lib/volunteerDB"
 
+type RegisterForm = {
+  name: string
+  email: string
+  password: string
+  bidang: string
+  kelas: string[]
+  bio: string
+}
+
 export default function RegisterVolunteer() {
   const router = useRouter()
 
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<RegisterForm>({
     name: "",
     email: "",
     password: "",
@@ -17,13 +26,13 @@ export default function RegisterVolunteer() {
     bio: ""
   })
 
-  const toggleKelas = (k) => {
-    setForm({
-      ...form,
-      kelas: form.kelas.includes(k)
-        ? form.kelas.filter(x => x !== k)
-        : [...form.kelas, k]
-    })
+  const toggleKelas = (k: string) => {
+    setForm(prev => ({
+      ...prev,
+      kelas: prev.kelas.includes(k)
+        ? prev.kelas.filter((x: string) => x !== k)
+        : [...prev.kelas, k]
+    }))
   }
 
   const submit = () => {
@@ -72,8 +81,10 @@ export default function RegisterVolunteer() {
             <div>
               <p className="font-semibold mb-2">Mengajar Kelas</p>
               <div className="flex gap-3">
-                {["SD","SMP","SMA"].map(k => (
-                  <button key={k}
+                {["SD","SMP","SMA"].map((k: string) => (
+                  <button
+                    type="button"
+                    key={k}
                     onClick={() => toggleKelas(k)}
                     className={`px-5 py-2 rounded-xl border 
                     ${form.kelas.includes(k) ? "bg-emerald-600 text-white" : ""}`}>

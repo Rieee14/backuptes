@@ -22,7 +22,7 @@ export default function Home() {
         <section className="relative overflow-hidden min-h-screen flex items-center justify-center">
 
   {/* BACKGROUND */}
-  <div className="absolute inset-0 bg-gradient-to-br from-purple-300 via-indigo-300 to-violet-300"></div>
+  <div className="absolute inset-0 bg-linear-to-br from-purple-300 via-indigo-300 to-violet-300"></div>
 
   {/* WAVE */}
   <svg viewBox="0 0 1440 320" className="absolute bottom-0 left-0 w-full">
