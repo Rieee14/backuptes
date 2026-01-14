@@ -1,3 +1,5 @@
+// components/navbar.jsx
+
 "use client"
 import Link from "next/link"
 import { useState } from "react"
@@ -7,23 +9,30 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <nav className="bg-white border-b border-slate-200 top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <nav className="bg-white border-b border-slate-200 top-0 z-50 relative overflow-visible">
+      <div className="max-w-7xl mx-auto px-4 py-1 flex justify-between items-center h-23">
 
         {/* LOGO */}
-        <Link href="/" className="relative h-24 w-50 flex items-center">
-          <Image
-            src="/logo.png"
-            alt="EduCare Logo"
-            fill
-            sizes="(max-width:768px) 140px, 200px"
-            className="object-contain"
-            priority
-          />
-        </Link>
+        <div className="relative w-64 h-14 flex items-center">
+  <Link
+    href="/"
+    className="absolute -top-8 -left-16 h-28 w-64"
+  >
+    <Image
+      src="/gambar.png"
+      alt="EduCare Logo"
+      fill
+      className="object-contain"
+      priority
+    />
+  </Link>
+</div>
+
+
+
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 text-sm">
           <Link href="/" className="text-slate-700 hover:text-indigo-600">Beranda</Link>
           <Link href="/kelas" className="text-slate-700 hover:text-indigo-600">Kelas</Link>
           <Link href="/kelas_terdaftar" className="text-slate-700 hover:text-indigo-600">My Class</Link>
@@ -31,7 +40,7 @@ export default function Navbar() {
           <Link href="/tentang_kami" className="text-slate-700 hover:text-indigo-600">Tentang Kami</Link>
           <Link
             href="/volunteer/daftar"
-            className="bg-indigo-600 hover:bg-indigo-700 transition text-white px-5 py-2 rounded-xl"
+            className="bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-1.5 rounded-lg text-sm"
           >
             Gabung Volunteer
           </Link>

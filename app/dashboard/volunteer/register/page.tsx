@@ -30,7 +30,7 @@ export default function RegisterVolunteer() {
     setForm(prev => ({
       ...prev,
       kelas: prev.kelas.includes(k)
-        ? prev.kelas.filter((x: string) => x !== k)
+        ? prev.kelas.filter(x => x !== k)
         : [...prev.kelas, k]
     }))
   }
@@ -41,12 +41,10 @@ export default function RegisterVolunteer() {
       return
     }
 
-    const user = registerVolunteer(form)
+    registerVolunteer(form)
 
-    localStorage.setItem("EDUCARE_ROLE", "volunteer")
-    localStorage.setItem("EDUCARE_USER", JSON.stringify(user))
-
-    router.push("/dashboard/volunteer")
+    alert("Pendaftaran berhasil! Silakan login.")
+    router.push("/dashboard/volunteer/login")
   }
 
   return (
@@ -62,46 +60,61 @@ export default function RegisterVolunteer() {
 
           <div className="space-y-4">
 
-            <input placeholder="Nama Lengkap"
+            <input
+              placeholder="Nama Lengkap"
+              className="w-full border px-4 py-3 rounded-xl"
               onChange={e => setForm({ ...form, name: e.target.value })}
-              className="w-full border px-4 py-3 rounded-xl"/>
+            />
 
-            <input placeholder="Email"
+            <input
+              placeholder="Email"
+              className="w-full border px-4 py-3 rounded-xl"
               onChange={e => setForm({ ...form, email: e.target.value })}
-              className="w-full border px-4 py-3 rounded-xl"/>
+            />
 
-            <input type="password" placeholder="Password"
+            <input
+              type="password"
+              placeholder="Password"
+              className="w-full border px-4 py-3 rounded-xl"
               onChange={e => setForm({ ...form, password: e.target.value })}
-              className="w-full border px-4 py-3 rounded-xl"/>
+            />
 
-            <input placeholder="Bidang Keahlian (contoh: Matematika, IPA)"
+            <input
+              placeholder="Bidang Keahlian"
+              className="w-full border px-4 py-3 rounded-xl"
               onChange={e => setForm({ ...form, bidang: e.target.value })}
-              className="w-full border px-4 py-3 rounded-xl"/>
+            />
 
             <div>
               <p className="font-semibold mb-2">Mengajar Kelas</p>
               <div className="flex gap-3">
-                {["SD","SMP","SMA"].map((k: string) => (
+                {["SD", "SMP", "SMA"].map(k => (
                   <button
-                    type="button"
                     key={k}
+                    type="button"
                     onClick={() => toggleKelas(k)}
-                    className={`px-5 py-2 rounded-xl border 
-                    ${form.kelas.includes(k) ? "bg-emerald-600 text-white" : ""}`}>
+                    className={`px-5 py-2 rounded-xl border
+                      ${form.kelas.includes(k) ? "bg-emerald-600 text-white" : ""}`}
+                  >
                     {k}
                   </button>
                 ))}
               </div>
             </div>
 
-            <textarea placeholder="Bio Singkat"
+            <textarea
+              placeholder="Bio Singkat"
+              className="w-full border px-4 py-3 rounded-xl h-28"
               onChange={e => setForm({ ...form, bio: e.target.value })}
-              className="w-full border px-4 py-3 rounded-xl h-28"/>
+            />
 
-            <button onClick={submit}
-              className="bg-indigo-600 text-white w-full py-3 rounded-xl font-semibold hover:bg-indigo-700">
-              Daftar & Masuk Dashboard
+            <button
+              onClick={submit}
+              className="bg-indigo-600 text-white w-full py-3 rounded-xl font-semibold hover:bg-indigo-700"
+            >
+              Daftar
             </button>
+
           </div>
         </div>
       </section>

@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Siti Aisyah",
+    "email": "aisyah@gmail.com",
+    "password": "123456",
+    "bidang": "Matematika",
+    "kelas": ["SD","SMP"],
+    "bio": "Mahasiswa Pendidikan Matematika, aktif mengajar bimbel gratis."
+  },
+  {
+    "id": 2,
+    "name": "Ahmad Fauzi",
+    "email": "fauzi@gmail.com",
+    "password": "123456",
+    "bidang": "Bahasa Inggris",
+    "kelas": ["SMP","SMA"],
+    "bio": "Volunteer pengajar speaking & grammar."
+  },
+  {
+    "id": 3,
+    "name": "Dewi Lestari",
+    "email": "dewi@gmail.com",
+    "password": "123456",
+    "bidang": "IPA",
+    "kelas": ["SD"],
+    "bio": "Guru IPA, fokus pembelajaran berbasis eksperimen."
+  }
+]

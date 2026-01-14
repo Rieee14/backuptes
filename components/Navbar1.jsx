@@ -18,9 +18,9 @@ export default function Navbar() {
           <Link href="/class" className="text-slate-700 hover:text-indigo-600">class</Link>
           <Link href="/take" className="text-slate-700 hover:text-indigo-600">take class</Link>
           <Link href="/tentang" className="text-slate-700 hover:text-indigo-600">Tentang Kami</Link>
-          <Link href="/volunteer/daftar"
+          <Link href="/dashboard/volunteer/profil"
             className="bg-indigo-600 hover:bg-indigo-700 transition text-white px-5 py-2 rounded-xl">
-            Gabung Volunteer
+            Profile
           </Link>
         </div>
 
@@ -39,9 +39,9 @@ export default function Navbar() {
           <Link href="/class" onClick={() => setOpen(false)}>Kelas</Link>
           <Link href="/take" onClick={() => setOpen(false)}>take Kelas</Link>
           <Link href="/tentang" onClick={() => setOpen(false)}>Tentang Kami</Link>
-          <Link href="/volunteer/daftar"
+          <Link href="/dashboard/volunteer/profil"
             className="bg-indigo-600 text-white py-2 rounded-lg text-center">
-            Gabung Volunteer
+            Profile
           </Link>
         </div>
       )}

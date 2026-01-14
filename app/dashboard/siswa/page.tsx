@@ -9,13 +9,41 @@ export default function Home() {
       <Navbar />
         
       {/* 1. HERO */}
-      {/* 1. HERO */}
-<section className="relative h-screen w-full overflow-hidden">
-  <img
-    src="/hero.png"
-    alt="EduCare Hero"
-    className="w-full h-full object-cover"
-  />
+<section className="hero-new">
+
+  {/* Wave Background */}
+  <svg className="wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path
+      fill="#4EE3A1"
+      d="M0,96L60,112C120,128,240,160,360,170.7C480,181,600,171,720,149.3C840,128,960,96,1080,90.7C1200,85,1320,107,1380,117.3L1440,128L1440,0L0,0Z"
+    />
+  </svg>
+
+  <div className="container">
+    <div className="photo-wrapper">
+      <img src="/2.jpg" />
+    </div>
+
+    <div className="text">
+      <h1>
+        Belajar Gratis untuk <br />
+        Masa Depan Lebih <br />
+        Setara
+      </h1>
+      <p>
+        Inisiatif sociopreneur di bidang pendidikan yang menjembatani siswa
+        dengan para volunteer pengajar profesional untuk menciptakan
+        pembelajaran yang inklusif dan berdampak.
+      </p>
+    </div>
+  </div>
+
+  {/* Dot kanan bawah */}
+  <div className="dots">
+    {Array.from({ length: 64 }).map((_, i) => (
+      <span key={i}></span>
+    ))}
+  </div>
 </section>
 
       
@@ -38,7 +66,7 @@ export default function Home() {
       Masalah Akses Pendidikan
     </h1>
 
-    <p className="mt-6 text-slate-700 leading-relaxed text-lg">
+    <p className="text-white! md:text-l mt-6 leading-tight  sm:mb-6">
       Banyak siswa di Indonesia masih kesulitan mengakses bimbingan belajar berkualitas karena keterbatasan ekonomi dan lokasi.
       Platform ini hadir sebagai solusi pembelajaran gratis dan inklusif.
     </p>
@@ -47,12 +75,34 @@ export default function Home() {
 </section>
 
 
-   
-{/* ===== TUJUAN EDUCARE ===== */}
 {/* ===== TUJUAN EDUCARE ===== */}
 <section className="bg-black py-24 sm:py-32">
   <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-24 sm:space-y-28">
 
+    {/* ===== VISI ===== */}
+    <div className="text-center max-w-3xl mx-auto space-y-6">
+  <h2 className="text-white! text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-wide">
+    VISI
+  </h2>
+
+  <p className="text-white/90 text-base sm:text-lg leading-relaxed italic">
+    “Mewujudkan pendidikan yang setara, inklusif, dan dapat diakses oleh semua anak Indonesia.”
+  </p>
+
+  <p className="text-white/60 text-sm sm:text-base">
+    Kami percaya bahwa setiap anak berhak mendapatkan pendidikan berkualitas tanpa dibatasi kondisi ekonomi maupun geografis.
+  </p>
+</div>
+
+    {/* ===== MISI ===== */}
+    <div className="text-center space-y-4">
+  <h3 className="text-white! text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide">
+    MISI
+  </h3>
+  <p className="text-white/60">
+    Langkah nyata yang kami lakukan
+  </p>
+</div>
 
 {/* CARD 1 */}
 <div className="mx-auto w-full max-w-5xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 bg-linear-to-r from-indigo-500 via-purple-500 to-fuchsia-500 grid md:grid-cols-2 gap-10 sm:gap-16 items-center">
@@ -69,7 +119,7 @@ export default function Home() {
   <div className="relative flex justify-center order-1 md:order-2">
     <div className="absolute w-52 h-52 sm:w-72 sm:h-72 bg-white/20 blur-2xl rounded-[48%_52%_55%_45%]"></div>
     <div className="relative w-44 h-44 sm:w-64 sm:h-64 overflow-hidden shadow-2xl rounded-[48%_52%_55%_45%]">
-      <img src="/goal1.jpg" className="w-full h-full object-cover scale-110" />
+      <img src="/3.jpg" className="w-full h-full object-cover scale-110" />
     </div>
   </div>
 
@@ -81,7 +131,7 @@ export default function Home() {
   <div className="relative flex justify-center order-1 md:order-1">
     <div className="absolute w-52 h-64 sm:w-72 sm:h-80 bg-white/20 blur-2xl rounded-[35%_65%_55%_45%]"></div>
     <div className="relative w-44 h-56 sm:w-56 sm:h-72 overflow-hidden shadow-2xl rounded-[35%_65%_55%_45%]">
-      <img src="/goal2.jpg" className="w-full h-full object-cover scale-110" />
+      <img src="/1.jpg" className="w-full h-full object-cover scale-110" />
     </div>
   </div>
 
@@ -112,7 +162,7 @@ export default function Home() {
   <div className="relative flex justify-center order-1 md:order-2">
     <div className="absolute w-52 h-48 sm:w-72 sm:h-64 bg-white/20 blur-2xl rounded-[25%_25%_35%_35%]"></div>
     <div className="relative w-44 h-40 sm:w-64 sm:h-56 overflow-hidden shadow-2xl rounded-[25%_25%_35%_35%]">
-      <img src="/goal3.jpg" className="w-full h-full object-cover scale-110" />
+      <img src="/4.jpg" className="w-full h-full object-cover scale-110" />
     </div>
   </div>
 
@@ -125,7 +175,7 @@ export default function Home() {
   <div className="relative flex justify-center order-1 md:order-1">
     <div className="absolute w-52 h-40 sm:w-72 sm:h-56 bg-white/20 blur-2xl rounded-[55%_45%_35%_65%]"></div>
     <div className="relative w-44 h-36 sm:w-64 sm:h-52 overflow-hidden shadow-2xl rounded-[55%_45%_35%_65%]">
-      <img src="/goal4.jpg" className="w-full h-full object-cover scale-110" />
+      <img src="/5.jpg" className="w-full h-full object-cover scale-110" />
     </div>
   </div>
 
