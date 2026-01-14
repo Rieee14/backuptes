@@ -37,7 +37,7 @@ export default function LiveClient() {
 
   const endLive = () => {
     clearLiveChat(id)
-    router.push("/dashboard")
+    router.push("/dashboard/siswa")
   }
 
   return (

@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { loginVolunteer } from "@/lib/volunteerDB"
+import { getAllVolunteers } from "@/lib/volunteerDB"
+
 
 export default function VolunteerLogin() {
   const router = useRouter()

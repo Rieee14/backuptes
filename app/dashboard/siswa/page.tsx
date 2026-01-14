@@ -9,23 +9,44 @@ export default function Home() {
       <Navbar />
         
       {/* 1. HERO */}
-      <section className="bg-indigo-50 py-32 px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-          Belajar Gratis untuk Masa Depan Lebih Setara
-        </h1>
-        <p className="max-w-xl mx-auto text-slate-600 mb-10">
-          Platform sociopreneur pendidikan yang menghubungkan siswa dengan volunteer pengajar profesional.
-        </p>
-      </section>
+      {/* 1. HERO */}
+<section className="relative h-screen w-full overflow-hidden">
+  <img
+    src="/hero.png"
+    alt="EduCare Hero"
+    className="w-full h-full object-cover"
+  />
+</section>
+
       
-      {/* 2. MASALAH */}
-      <section className="max-w-6xl mx-auto py-24 px-4 text-center">
-        <h2 className="text-3xl font-bold text-slate-800 mb-6">Masalah Akses Pendidikan</h2>
-        <p className="text-slate-600 max-w-3xl mx-auto">
-          Banyak siswa di Indonesia masih kesulitan mengakses bimbingan belajar berkualitas karena keterbatasan ekonomi dan lokasi.
-          Platform ini hadir sebagai solusi pembelajaran gratis dan inklusif.
-        </p>
-      </section>
+        <section className="relative overflow-hidden min-h-screen flex items-center justify-center">
+
+  {/* BACKGROUND */}
+  <div className="absolute inset-0 bg-gradient-to-br from-purple-300 via-indigo-300 to-violet-300"></div>
+
+  {/* WAVE */}
+  <svg viewBox="0 0 1440 320" className="absolute bottom-0 left-0 w-full">
+    <path fill="#CFEAFE" fillOpacity="1"
+      d="M0,160L60,186.7C120,213,240,267,360,277.3C480,288,600,256,720,240C840,224,960,224,1080,208C1200,192,1320,160,1380,144L1440,128V320H0Z">
+    </path>
+  </svg>
+
+  {/* CONTENT */}
+  <div className="relative text-center px-6 max-w-2xl">
+
+    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900">
+      Masalah Akses Pendidikan
+    </h1>
+
+    <p className="mt-6 text-slate-700 leading-relaxed text-lg">
+      Banyak siswa di Indonesia masih kesulitan mengakses bimbingan belajar berkualitas karena keterbatasan ekonomi dan lokasi.
+      Platform ini hadir sebagai solusi pembelajaran gratis dan inklusif.
+    </p>
+
+  </div>
+</section>
+
+
    
 {/* ===== TUJUAN EDUCARE ===== */}
 {/* ===== TUJUAN EDUCARE ===== */}
@@ -122,23 +143,7 @@ export default function Home() {
 
   </div>
 </section>
-
-
-
-
-
-
-      {/* 3. CARA KERJA */}
-      <section className="bg-slate-50 py-24">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 px-4 text-center">
-          {["Daftar", "Pilih / Buka Kelas", "Belajar Gratis"].map((step, i) => (
-            <div key={i} className="bg-white border border-slate-200 p-8 rounded-2xl">
-              <h3 className="font-semibold text-lg text-slate-800 mb-2">{step}</h3>
-              <p className="text-slate-500">Proses mudah dan transparan.</p>
-            </div>
-          ))}
-        </div>
-      </section>
+    
 
       {/* 4. PERAN */}
       <section className="max-w-7xl mx-auto py-24 grid md:grid-cols-2 gap-12 px-4">

@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
+import Image from "next/image"
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -8,8 +9,17 @@ export default function Navbar() {
   return (
     <nav className="bg-white border-b border-slate-200 top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold text-indigo-600">
-          EduCare
+
+        {/* LOGO */}
+        <Link href="/" className="relative h-24 w-50 flex items-center">
+          <Image
+            src="/logo.png"
+            alt="EduCare Logo"
+            fill
+            sizes="(max-width:768px) 140px, 200px"
+            className="object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Menu */}
@@ -19,8 +29,10 @@ export default function Navbar() {
           <Link href="/kelas_terdaftar" className="text-slate-700 hover:text-indigo-600">My Class</Link>
           <Link href="/volunteer" className="text-slate-700 hover:text-indigo-600">Volunteer</Link>
           <Link href="/tentang_kami" className="text-slate-700 hover:text-indigo-600">Tentang Kami</Link>
-          <Link href="/volunteer/daftar"
-            className="bg-indigo-600 hover:bg-indigo-700 transition text-white px-5 py-2 rounded-xl">
+          <Link
+            href="/volunteer/daftar"
+            className="bg-indigo-600 hover:bg-indigo-700 transition text-white px-5 py-2 rounded-xl"
+          >
             Gabung Volunteer
           </Link>
         </div>
@@ -28,7 +40,8 @@ export default function Navbar() {
         {/* Mobile Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-slate-700 focus:outline-none">
+          className="md:hidden text-slate-700 focus:outline-none"
+        >
           ☰
         </button>
       </div>
@@ -41,8 +54,10 @@ export default function Navbar() {
           <Link href="/kelas_terdaftar" onClick={() => setOpen(false)}>My Class</Link>
           <Link href="/volunteer" onClick={() => setOpen(false)}>Volunteer</Link>
           <Link href="/tentang_kami" onClick={() => setOpen(false)}>Tentang Kami</Link>
-          <Link href="/volunteer/daftar"
-            className="bg-indigo-600 text-white py-2 rounded-lg text-center">
+          <Link
+            href="/volunteer/daftar"
+            className="bg-indigo-600 text-white py-2 rounded-lg text-center"
+          >
             Gabung Volunteer
           </Link>
         </div>
