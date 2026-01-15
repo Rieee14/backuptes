@@ -128,7 +128,7 @@ p {
 .hero-new {
   position: relative;
   min-height: 100vh;
-  background: #AEE7EE;
+  background: linear-gradient(180deg, #cfd2ff 0%, #CFF8EC 100%);
   overflow: hidden;
 }
 

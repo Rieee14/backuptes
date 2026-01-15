@@ -2,21 +2,32 @@
 "use client"
 import Footer from "@/components/Footer"
 import ThreeSteps from "@/components/ThreeSteps"
+import LandingPage from "@/components/LandingPage"
 
 export default function Home() {
   return (
     <>
-        
+        <LandingPage />
       {/* 1. HERO */}
 <section className="hero-new">
 
   {/* Wave Background */}
   <svg className="wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path
-      fill="#4EE3A1"
-      d="M0,96L60,112C120,128,240,160,360,170.7C480,181,600,171,720,149.3C840,128,960,96,1080,90.7C1200,85,1320,107,1380,117.3L1440,128L1440,0L0,0Z"
-    />
-  </svg>
+  
+  <defs>
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+  <stop offset="10%" stopColor="#6FE7C8"/>
+  <stop offset="100%" stopColor="#6FE7C8"/>
+</linearGradient>
+
+  </defs>
+
+  <path
+    fill="url(#waveGradient)"
+    d="M0,96L60,112C120,128,240,160,360,170.7C480,181,600,171,720,149.3C840,128,960,96,1080,90.7C1200,85,1320,107,1380,117.3L1440,128L1440,0L0,0Z"
+  />
+</svg>
+
 
   <div className="container">
     <div className="photo-wrapper">
@@ -42,34 +53,6 @@ export default function Home() {
     {Array.from({ length: 64 }).map((_, i) => (
       <span key={i}></span>
     ))}
-  </div>
-</section>
-
-      
-        <section className="relative overflow-hidden min-h-screen flex items-center justify-center">
-
-  {/* BACKGROUND */}
-  <div className="absolute inset-0 bg-linear-to-br from-purple-300 via-indigo-300 to-violet-300"></div>
-
-  {/* WAVE */}
-  <svg viewBox="0 0 1440 320" className="absolute bottom-0 left-0 w-full">
-    <path fill="#CFEAFE" fillOpacity="1"
-      d="M0,160L60,186.7C120,213,240,267,360,277.3C480,288,600,256,720,240C840,224,960,224,1080,208C1200,192,1320,160,1380,144L1440,128V320H0Z">
-    </path>
-  </svg>
-
-  {/* CONTENT */}
-  <div className="relative text-center px-6 max-w-2xl">
-
-    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900">
-      Masalah Akses Pendidikan
-    </h1>
-
-    <p className="text-white! md:text-l mt-6 leading-tight  sm:mb-6">
-      Banyak siswa di Indonesia masih kesulitan mengakses bimbingan belajar berkualitas karena keterbatasan ekonomi dan lokasi.
-      Platform ini hadir sebagai solusi pembelajaran gratis dan inklusif.
-    </p>
-
   </div>
 </section>
 
