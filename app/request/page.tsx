@@ -43,13 +43,19 @@ export default function Request() {
       <form onSubmit={handleSubmit} className="max-w-xl mx-auto py-20 px-4">
         <h1 className="text-2xl font-bold mb-6">Ajukan Kebutuhan Belajar</h1>
 
-        <input
-          required
-          className="border rounded-lg p-3 w-full mb-4"
-          placeholder="Jenjang"
-          value={level}
-          onChange={e => setLevel(e.target.value)}
-        />
+        <select
+  required
+  className="border rounded-lg p-3 w-full mb-4 bg-white"
+  value={level}
+  onChange={e => setLevel(e.target.value)}
+>
+  <option value="">Pilih Jenjang Pendidikan</option>
+  <option value="SD">SD / MI</option>
+  <option value="SMP">SMP / MTs</option>
+  <option value="SMA">SMA / sederajat</option>
+  <option value="Umum">Lainnya....</option>
+</select>
+
 
         <input
           required
@@ -62,7 +68,7 @@ export default function Request() {
         <textarea
           required
           className="border rounded-lg p-3 w-full mb-6"
-          placeholder="Kesulitan belajar..."
+          placeholder="Materi dibutuhkan..."
           value={problem}
           onChange={e => setProblem(e.target.value)}
         />

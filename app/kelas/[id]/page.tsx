@@ -55,7 +55,7 @@ export default function Detail() {
 
         {isJoined ? (
           <Link
-            href={`/live?class=${kelas.id}`}
+            href={`/live?class=${kelas.id}&role=siswa`}
             className="inline-block bg-emerald-600 text-white px-6 py-3 rounded-xl"
           >
             Join Live

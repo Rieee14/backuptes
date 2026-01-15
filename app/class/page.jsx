@@ -61,7 +61,7 @@ export default function VolunteerDashboard() {
     e.stopPropagation()
     startClass(cls.id)
     setClasses(getClasses())
-    window.location.href = `/live?class=${cls.id}`
+    window.location.href = `/live?class=${cls.id}&role=volunteer`
   }}
   className="bg-indigo-600 text-white px-3 py-1 rounded text-xs"
 >

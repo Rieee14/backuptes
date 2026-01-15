@@ -10,6 +10,7 @@ export default function LiveClient() {
   const params = useSearchParams()
   const router = useRouter()
   const id = params.get("class")
+  const role = params.get("role") // Ambil role dari URL parameter
 
   const [kelas, setKelas] = useState(null)
   const [chats, setChats] = useState([])
@@ -19,10 +20,14 @@ export default function LiveClient() {
   const [isStreaming, setIsStreaming] = useState(false)
   const [isMicOn, setIsMicOn] = useState(true)
   const [isCameraOn, setIsCameraOn] = useState(true)
+  const [isVolumeMuted, setIsVolumeMuted] = useState(false) // Untuk siswa mute audio
   const [error, setError] = useState("")
   
   const videoRef = useRef(null)
   const streamRef = useRef(null)
+
+  // Cek apakah user adalah volunteer
+  const isVolunteer = role === "volunteer" || role === "pengajar"
 
   useEffect(() => {
     if (!id) return
@@ -40,8 +45,10 @@ export default function LiveClient() {
     }
   }, [id])
 
-  // Fungsi untuk start streaming
+  // Fungsi untuk start streaming (Hanya untuk Volunteer)
   const startStream = async () => {
+    if (!isVolunteer) return
+    
     try {
       setError("")
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -66,6 +73,13 @@ export default function LiveClient() {
     }
   }
 
+  // Fungsi untuk join live sebagai viewer (Untuk Siswa)
+  const joinLive = () => {
+    // Simulasi join live - di sini nanti connect ke stream volunteer
+    setIsStreaming(true)
+    // TODO: Implement WebRTC atau media server untuk receive stream dari volunteer
+  }
+
   // Fungsi untuk stop streaming
   const stopStream = () => {
     if (streamRef.current) {
@@ -80,25 +94,33 @@ export default function LiveClient() {
     setIsStreaming(false)
   }
 
-  // Toggle microphone
+  // Toggle microphone (Hanya untuk Volunteer)
   const toggleMic = () => {
-    if (streamRef.current) {
-      const audioTrack = streamRef.current.getAudioTracks()[0]
-      if (audioTrack) {
-        audioTrack.enabled = !audioTrack.enabled
-        setIsMicOn(audioTrack.enabled)
-      }
+    if (!isVolunteer || !streamRef.current) return
+    
+    const audioTrack = streamRef.current.getAudioTracks()[0]
+    if (audioTrack) {
+      audioTrack.enabled = !audioTrack.enabled
+      setIsMicOn(audioTrack.enabled)
     }
   }
 
-  // Toggle camera
+  // Toggle camera (Hanya untuk Volunteer)
   const toggleCamera = () => {
-    if (streamRef.current) {
-      const videoTrack = streamRef.current.getVideoTracks()[0]
-      if (videoTrack) {
-        videoTrack.enabled = !videoTrack.enabled
-        setIsCameraOn(videoTrack.enabled)
-      }
+    if (!isVolunteer || !streamRef.current) return
+    
+    const videoTrack = streamRef.current.getVideoTracks()[0]
+    if (videoTrack) {
+      videoTrack.enabled = !videoTrack.enabled
+      setIsCameraOn(videoTrack.enabled)
+    }
+  }
+
+  // Toggle volume mute (Untuk Siswa)
+  const toggleVolume = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted
+      setIsVolumeMuted(videoRef.current.muted)
     }
   }
 
@@ -106,7 +128,8 @@ export default function LiveClient() {
 
   const send = () => {
     if (!msg.trim()) return
-    sendLiveChat(id, "Siswa", msg)
+    const userName = isVolunteer ? "Pengajar" : "Siswa"
+    sendLiveChat(id, userName, msg)
     setMsg("")
     setChats(getLiveChat(id))
   }
@@ -114,6 +137,11 @@ export default function LiveClient() {
   const endLive = () => {
     stopStream()
     clearLiveChat(id)
+    router.push(isVolunteer ? "/dashboard/volunteer" : "/dashboard/siswa")
+  }
+
+  const leaveLive = () => {
+    stopStream()
     router.push("/dashboard/siswa")
   }
 
@@ -125,7 +153,12 @@ export default function LiveClient() {
         <div className="md:col-span-2 bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl">
           <div className="bg-red-600 px-4 py-2 text-sm font-semibold flex items-center justify-between">
             <span>🔴 LIVE — {kelas.title}</span>
-            {isStreaming && <span className="text-xs">Streaming Active</span>}
+            <div className="flex items-center gap-2">
+              {isStreaming && <span className="text-xs">● Streaming Active</span>}
+              <span className="text-xs bg-black/30 px-2 py-1 rounded">
+                {isVolunteer ? "👨‍🏫 Pengajar" : "👨‍🎓 Siswa"}
+              </span>
+            </div>
           </div>
 
           {/* Video Container */}
@@ -134,7 +167,7 @@ export default function LiveClient() {
               ref={videoRef}
               autoPlay
               playsInline
-              muted
+              muted={isVolunteer} // Volunteer muted to avoid feedback
               className="w-full h-full object-cover"
             />
             
@@ -143,11 +176,15 @@ export default function LiveClient() {
                 <svg className="w-20 h-20 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
-                <p className="text-lg mb-4">Klik "Start Live" untuk mulai streaming</p>
+                {isVolunteer ? (
+                  <p className="text-lg mb-4">Klik "Start Live" untuk mulai streaming</p>
+                ) : (
+                  <p className="text-lg mb-4">Menunggu pengajar memulai live...</p>
+                )}
               </div>
             )}
 
-            {!isCameraOn && isStreaming && (
+            {!isCameraOn && isStreaming && isVolunteer && (
               <div className="absolute inset-0 flex items-center justify-center bg-black">
                 <p className="text-zinc-400">Kamera Mati</p>
               </div>
@@ -161,44 +198,75 @@ export default function LiveClient() {
             </div>
           )}
 
-          {/* Controls */}
-          <div className="grid grid-cols-4 gap-4 p-4 bg-zinc-950">
-            {!isStreaming ? (
-              <button 
-                onClick={startStream}
-                className="col-span-4 bg-green-600 hover:bg-green-700 py-3 rounded-lg font-semibold transition-colors"
-              >
-                ▶️ Start Live
-              </button>
-            ) : (
-              <>
+          {/* Controls - VOLUNTEER */}
+          {isVolunteer && (
+            <div className="grid grid-cols-4 gap-4 p-4 bg-zinc-950">
+              {!isStreaming ? (
                 <button 
-                  onClick={toggleMic}
-                  className={`${isMicOn ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-red-600 hover:bg-red-700'} py-2 rounded-lg transition-colors`}
+                  onClick={startStream}
+                  className="col-span-4 bg-green-600 hover:bg-green-700 py-3 rounded-lg font-semibold transition-colors"
                 >
-                  {isMicOn ? '🎤' : '🔇'} Mic
+                  ▶️ Start Live
                 </button>
+              ) : (
+                <>
+                  <button 
+                    onClick={toggleMic}
+                    className={`${isMicOn ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-red-600 hover:bg-red-700'} py-2 rounded-lg transition-colors`}
+                  >
+                    {isMicOn ? '🎤' : '🔇'} Mic
+                  </button>
+                  <button 
+                    onClick={toggleCamera}
+                    className={`${isCameraOn ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-red-600 hover:bg-red-700'} py-2 rounded-lg transition-colors`}
+                  >
+                    {isCameraOn ? '📷' : '📷'} Camera
+                  </button>
+                  <button 
+                    onClick={stopStream}
+                    className="bg-yellow-600 hover:bg-yellow-700 py-2 rounded-lg transition-colors"
+                  >
+                    ⏸️ Stop
+                  </button>
+                  <button 
+                    onClick={endLive} 
+                    className="bg-red-600 hover:bg-red-700 py-2 rounded-lg transition-colors font-semibold"
+                  >
+                    End
+                  </button>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* Controls - SISWA */}
+          {!isVolunteer && (
+            <div className="grid grid-cols-3 gap-4 p-4 bg-zinc-950">
+              {!isStreaming ? (
                 <button 
-                  onClick={toggleCamera}
-                  className={`${isCameraOn ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-red-600 hover:bg-red-700'} py-2 rounded-lg transition-colors`}
+                  onClick={joinLive}
+                  className="col-span-3 bg-indigo-600 hover:bg-indigo-700 py-3 rounded-lg font-semibold transition-colors"
                 >
-                  {isCameraOn ? '📷' : '📷'} Camera
+                  🎥 Join Live
                 </button>
-                <button 
-                  onClick={stopStream}
-                  className="bg-yellow-600 hover:bg-yellow-700 py-2 rounded-lg transition-colors"
-                >
-                  ⏸️ Stop
-                </button>
-                <button 
-                  onClick={endLive} 
-                  className="bg-red-600 hover:bg-red-700 py-2 rounded-lg transition-colors font-semibold"
-                >
-                  End
-                </button>
-              </>
-            )}
-          </div>
+              ) : (
+                <>
+                  <button 
+                    onClick={toggleVolume}
+                    className={`${isVolumeMuted ? 'bg-red-600 hover:bg-red-700' : 'bg-zinc-800 hover:bg-zinc-700'} py-2 rounded-lg transition-colors col-span-1`}
+                  >
+                    {isVolumeMuted ? '🔇' : '🔊'} Suara
+                  </button>
+                  <button 
+                    onClick={leaveLive} 
+                    className="bg-red-600 hover:bg-red-700 py-2 rounded-lg transition-colors font-semibold col-span-2"
+                  >
+                    🚪 Keluar Live
+                  </button>
+                </>
+              )}
+            </div>
+          )}
         </div>
 
         {/* CHAT */}
@@ -214,7 +282,9 @@ export default function LiveClient() {
               chats.map(c => (
                 <div key={c.id} className="bg-zinc-800 p-3 rounded-lg">
                   <div className="flex items-center justify-between mb-1">
-                    <b className="text-indigo-400">{c.name}</b>
+                    <b className={c.name === "Pengajar" ? "text-amber-400" : "text-indigo-400"}>
+                      {c.name === "Pengajar" ? "👨‍🏫 " : "👨‍🎓 "}{c.name}
+                    </b>
                     <span className="text-xs text-zinc-500">{c.time}</span>
                   </div>
                   <div className="text-zinc-200">{c.text}</div>
