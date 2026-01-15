@@ -75,14 +75,16 @@ export default function VolunteerDashboard() {
       {/* LOGOUT */}
       <div className="text-center pb-20">
         <button
-          onClick={() => {
-            localStorage.removeItem("EDUCARE_ROLE")
-            router.push("/dashboard/volunteer/login")
-          }}
-          className="inline-flex items-center gap-2 border px-6 py-3 rounded-xl text-red-600 hover:bg-red-50"
-        >
-          <LogOut size={18} /> Logout
-        </button>
+  onClick={() => {
+    localStorage.clear()
+    document.cookie = "EDUCARE_LOGIN=; Max-Age=0; path=/"
+    router.push("/dashboard/volunteer/login")
+  }}
+  className="inline-flex items-center gap-2 border px-6 py-3 rounded-xl text-red-600 hover:bg-red-50"
+>
+  <LogOut size={18} /> Logout
+</button>
+
       </div>
     </>
   )

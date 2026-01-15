@@ -29,20 +29,14 @@ export default function Navbar() {
 </div>
 
 
-
-
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 text-sm">
-          <Link href="/dashboard/siswa" className="text-slate-700 hover:text-indigo-600">Beranda</Link>
-          <Link href="/kelas" className="text-slate-700 hover:text-indigo-600">Kelas</Link>
-          <Link href="/kelas_terdaftar" className="text-slate-700 hover:text-indigo-600">My Class</Link>
-          <Link href="/volunteer" className="text-slate-700 hover:text-indigo-600">Volunteer</Link>
           <Link href="/tentang_kami" className="text-slate-700 hover:text-indigo-600">Tentang Kami</Link>
           <Link
             href="/volunteer/daftar"
             className="bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-1.5 rounded-lg text-sm"
           >
-            Gabung Volunteer
+            Daftar/Masuk
           </Link>
         </div>
 
@@ -58,10 +52,6 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {open && (
         <div className="md:hidden bg-white border-t border-slate-200 px-4 pb-4 flex flex-col gap-4">
-          <Link href="/dashboard/siswa" onClick={() => setOpen(false)}>Beranda</Link>
-          <Link href="/kelas" onClick={() => setOpen(false)}>Kelas</Link>
-          <Link href="/kelas_terdaftar" onClick={() => setOpen(false)}>My Class</Link>
-          <Link href="/volunteer" onClick={() => setOpen(false)}>Volunteer</Link>
           <Link href="/tentang_kami" onClick={() => setOpen(false)}>Tentang Kami</Link>
           <Link
             href="/volunteer/daftar"

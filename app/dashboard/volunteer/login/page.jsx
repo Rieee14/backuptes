@@ -11,7 +11,7 @@ export default function VolunteerLogin() {
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
 
-  const login = () => {
+ const login = () => {
   const user = loginVolunteer(email, password)
 
   if (!user) {
@@ -21,8 +21,11 @@ export default function VolunteerLogin() {
 
   localStorage.setItem("EDUCARE_ROLE", "volunteer")
   localStorage.setItem("EDUCARE_USER", JSON.stringify(user))
+  document.cookie = "EDUCARE_LOGIN=true; path=/"
+
   router.push("/dashboard/volunteer")
 }
+
 
 
   return (

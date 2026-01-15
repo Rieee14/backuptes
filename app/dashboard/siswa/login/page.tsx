@@ -9,10 +9,17 @@ export default function LoginStudent() {
   const [password,setPassword] = useState("")
 
   const login = () => {
-    const user = loginStudent(email,password)
-    if(!user) return alert("Login gagal")
-    localStorage.setItem("EDUCARE_ROLE","student")
+    const user = loginStudent(email, password)
+  
+    if (!user) {
+      alert("Email atau password salah")
+      return
+    }
+  
+    localStorage.setItem("EDUCARE_ROLE", "volunteer")
     localStorage.setItem("EDUCARE_USER", JSON.stringify(user))
+    document.cookie = "EDUCARE_LOGIN=true; path=/"
+  
     router.push("/dashboard/siswa")
   }
 

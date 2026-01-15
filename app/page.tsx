@@ -1,12 +1,11 @@
 // app/page.tsx
 "use client"
-import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import ThreeSteps from "@/components/ThreeSteps"
 
 export default function Home() {
   return (
     <>
-      <Navbar />
         
       {/* 1. HERO */}
 <section className="hero-new">
@@ -74,6 +73,7 @@ export default function Home() {
   </div>
 </section>
 
+<ThreeSteps />
 
 {/* ===== TUJUAN EDUCARE ===== */}
 <section className="bg-black py-24 sm:py-32">
