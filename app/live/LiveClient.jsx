@@ -4,7 +4,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
-import { getClassById, clearLiveChat, getLiveChat, sendLiveChat } from "@/lib/fakeDB"
+import { getClassById, clearLiveChat, getLiveChat, sendLiveChat, finishClass } from "@/lib/fakeDB"
 
 export default function LiveClient() {
   const params = useSearchParams()
@@ -137,6 +137,13 @@ export default function LiveClient() {
   const endLive = () => {
     stopStream()
     clearLiveChat(id)
+    
+    // Finish class ketika volunteer end live
+    if (isVolunteer) {
+      finishClass(id)
+      alert("Kelas telah selesai dan dihapus dari daftar.")
+    }
+    
     router.push(isVolunteer ? "/dashboard/volunteer" : "/dashboard/siswa")
   }
 
