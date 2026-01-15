@@ -27,9 +27,6 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-slate-800 text-center text-sm py-4 text-slate-500">
-        © {new Date().getFullYear()} EduCare. All rights reserved.
-      </div>
     </footer>
   )
 }

@@ -39,6 +39,8 @@
   font-size: 52px;
   line-height: 1.2;
   margin-bottom: 40px;
+  font-weight: 600;
+  color: #fff;
   text-shadow: 0 0 25px rgba(255,255,255,0.5);
 }
 

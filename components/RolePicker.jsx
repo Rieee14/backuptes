@@ -21,9 +21,9 @@ export default function RolePicker() {
         <h2>Pilih Peran mu</h2>
 
         <div className="lp-role">
-          <Link href="/kelas" className="lp-link pelajar">Sebagai <b>Pelajar</b></Link>
+          <Link href="/dashboard/siswa/login" className="lp-link pelajar">Sebagai <b>Pelajar</b></Link>
           <div className="lp-divider"></div>
-          <Link href="/volunteer" className="lp-link relawan">Sebagai <b>Relawan</b></Link>
+          <Link href="/dashboard/volunteer/login" className="lp-link relawan">Sebagai <b>Relawan</b></Link>
         </div>
       </div>
     </section>

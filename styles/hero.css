@@ -1,0 +1,19 @@
+.hero-bg {
+  background: linear-gradient(135deg, #4ef2b4, #6f6cff);
+  color: white;
+}
+
+.hero-container h1 {
+  font-size: 48px;
+}
+
+.hero-container button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.hero-bg {
+  min-height: 10vh;
+}

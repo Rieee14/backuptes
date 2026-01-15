@@ -1,5 +1,5 @@
 "use client"
-import "@/app/hero.css"
+import "./landing-page.css"
 
 export default function LandingPage() {
   return (
