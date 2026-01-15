@@ -2,7 +2,7 @@
 
 'use client'
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { getClassById, clearLiveChat, getLiveChat, sendLiveChat } from "@/lib/fakeDB"
 
@@ -14,6 +14,15 @@ export default function LiveClient() {
   const [kelas, setKelas] = useState(null)
   const [chats, setChats] = useState([])
   const [msg, setMsg] = useState("")
+  
+  // State untuk live streaming
+  const [isStreaming, setIsStreaming] = useState(false)
+  const [isMicOn, setIsMicOn] = useState(true)
+  const [isCameraOn, setIsCameraOn] = useState(true)
+  const [error, setError] = useState("")
+  
+  const videoRef = useRef(null)
+  const streamRef = useRef(null)
 
   useEffect(() => {
     if (!id) return
@@ -25,8 +34,73 @@ export default function LiveClient() {
       setChats(getLiveChat(id))
     }, 1000)
 
-    return () => clearInterval(i)
+    return () => {
+      clearInterval(i)
+      stopStream()
+    }
   }, [id])
+
+  // Fungsi untuk start streaming
+  const startStream = async () => {
+    try {
+      setError("")
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+          facingMode: "user"
+        },
+        audio: true
+      })
+      
+      streamRef.current = stream
+      
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream
+      }
+      
+      setIsStreaming(true)
+    } catch (err) {
+      console.error('Error accessing media devices:', err)
+      setError("Tidak dapat mengakses kamera/mikrofon. Pastikan izin sudah diberikan.")
+    }
+  }
+
+  // Fungsi untuk stop streaming
+  const stopStream = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => track.stop())
+      streamRef.current = null
+    }
+    
+    if (videoRef.current) {
+      videoRef.current.srcObject = null
+    }
+    
+    setIsStreaming(false)
+  }
+
+  // Toggle microphone
+  const toggleMic = () => {
+    if (streamRef.current) {
+      const audioTrack = streamRef.current.getAudioTracks()[0]
+      if (audioTrack) {
+        audioTrack.enabled = !audioTrack.enabled
+        setIsMicOn(audioTrack.enabled)
+      }
+    }
+  }
+
+  // Toggle camera
+  const toggleCamera = () => {
+    if (streamRef.current) {
+      const videoTrack = streamRef.current.getVideoTracks()[0]
+      if (videoTrack) {
+        videoTrack.enabled = !videoTrack.enabled
+        setIsCameraOn(videoTrack.enabled)
+      }
+    }
+  }
 
   if (!kelas) return null
 
@@ -38,53 +112,131 @@ export default function LiveClient() {
   }
 
   const endLive = () => {
+    stopStream()
     clearLiveChat(id)
-    router.push("/dashboard/volunteer")
+    router.push("/dashboard/siswa")
   }
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4 py-4">
       <div className="w-full max-w-6xl grid md:grid-cols-3 gap-6">
 
         {/* VIDEO */}
         <div className="md:col-span-2 bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl">
-          <div className="bg-red-600 px-4 py-2 text-sm font-semibold">
-            🔴 LIVE — {kelas.title}
+          <div className="bg-red-600 px-4 py-2 text-sm font-semibold flex items-center justify-between">
+            <span>🔴 LIVE — {kelas.title}</span>
+            {isStreaming && <span className="text-xs">Streaming Active</span>}
           </div>
 
-          <div className="aspect-video bg-black flex items-center justify-center text-zinc-500 text-xl">
-            Video Stream Placeholder
+          {/* Video Container */}
+          <div className="relative aspect-video bg-black">
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className="w-full h-full object-cover"
+            />
+            
+            {!isStreaming && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-500">
+                <svg className="w-20 h-20 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <p className="text-lg mb-4">Klik "Start Live" untuk mulai streaming</p>
+              </div>
+            )}
+
+            {!isCameraOn && isStreaming && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black">
+                <p className="text-zinc-400">Kamera Mati</p>
+              </div>
+            )}
           </div>
 
-          <div className="grid grid-cols-3 gap-4 p-4 bg-zinc-950">
-            <button className="bg-zinc-800 py-2 rounded">🎤 Mic</button>
-            <button className="bg-zinc-800 py-2 rounded">📷 Camera</button>
-            <button onClick={endLive} className="bg-red-600 py-2 rounded">End</button>
+          {/* Error Message */}
+          {error && (
+            <div className="bg-red-900/50 px-4 py-2 text-sm text-red-200">
+              {error}
+            </div>
+          )}
+
+          {/* Controls */}
+          <div className="grid grid-cols-4 gap-4 p-4 bg-zinc-950">
+            {!isStreaming ? (
+              <button 
+                onClick={startStream}
+                className="col-span-4 bg-green-600 hover:bg-green-700 py-3 rounded-lg font-semibold transition-colors"
+              >
+                ▶️ Start Live
+              </button>
+            ) : (
+              <>
+                <button 
+                  onClick={toggleMic}
+                  className={`${isMicOn ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-red-600 hover:bg-red-700'} py-2 rounded-lg transition-colors`}
+                >
+                  {isMicOn ? '🎤' : '🔇'} Mic
+                </button>
+                <button 
+                  onClick={toggleCamera}
+                  className={`${isCameraOn ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-red-600 hover:bg-red-700'} py-2 rounded-lg transition-colors`}
+                >
+                  {isCameraOn ? '📷' : '📷'} Camera
+                </button>
+                <button 
+                  onClick={stopStream}
+                  className="bg-yellow-600 hover:bg-yellow-700 py-2 rounded-lg transition-colors"
+                >
+                  ⏸️ Stop
+                </button>
+                <button 
+                  onClick={endLive} 
+                  className="bg-red-600 hover:bg-red-700 py-2 rounded-lg transition-colors font-semibold"
+                >
+                  End
+                </button>
+              </>
+            )}
           </div>
         </div>
 
         {/* CHAT */}
-        <div className="bg-zinc-900 rounded-3xl p-4 flex flex-col">
-          <div className="font-semibold mb-3">Live Chat</div>
+        <div className="bg-zinc-900 rounded-3xl p-4 flex flex-col h-[600px] md:h-auto">
+          <div className="font-semibold mb-3 pb-3 border-b border-zinc-800">💬 Live Chat</div>
 
-          <div className="flex-1 overflow-y-auto space-y-2 text-sm">
-            {chats.map(c => (
-              <div key={c.id} className="bg-zinc-800 p-2 rounded">
-                <b>{c.name}</b>
-                <div className="text-xs text-zinc-400">{c.time}</div>
-                {c.text}
+          <div className="flex-1 overflow-y-auto space-y-2 text-sm mb-3">
+            {chats.length === 0 ? (
+              <div className="text-center text-zinc-600 mt-4">
+                Belum ada chat. Jadilah yang pertama!
               </div>
-            ))}
+            ) : (
+              chats.map(c => (
+                <div key={c.id} className="bg-zinc-800 p-3 rounded-lg">
+                  <div className="flex items-center justify-between mb-1">
+                    <b className="text-indigo-400">{c.name}</b>
+                    <span className="text-xs text-zinc-500">{c.time}</span>
+                  </div>
+                  <div className="text-zinc-200">{c.text}</div>
+                </div>
+              ))
+            )}
           </div>
 
-          <div className="flex mt-3 gap-2">
+          <div className="flex gap-2">
             <input
               value={msg}
               onChange={e => setMsg(e.target.value)}
+              onKeyPress={e => e.key === 'Enter' && send()}
               placeholder="Tulis komentar..."
-              className="flex-1 bg-zinc-800 px-3 py-2 rounded text-white"
+              className="flex-1 bg-zinc-800 px-3 py-2 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
-            <button onClick={send} className="bg-indigo-600 px-4 rounded">Kirim</button>
+            <button 
+              onClick={send} 
+              className="bg-indigo-600 hover:bg-indigo-700 px-5 rounded-lg transition-colors font-semibold"
+            >
+              Kirim
+            </button>
           </div>
         </div>
 
