@@ -12,6 +12,8 @@
 .lp-left {
   color: white;
   max-width: 520px;
+  display: flex;
+  flex-direction: column;
 }
 
 .lp-logo {
@@ -65,12 +67,24 @@
   50% { transform: translateY(-15px); }
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media (max-width: 900px) {
   .lp-rooti {
-    flex-direction: column-reverse;
-    text-align: center;
+    flex-direction: column;
     padding: 56px 20px;
+    gap: 36px;
+    text-align: center;
+  }
+
+  /* PINDAHKAN LOGO KE ATAS */
+  .lp-logo {
+    order: -2;
+    margin: 0 auto 16px;
+  }
+
+  /* GAMBAR DI BAWAH LOGO */
+  .lp-right {
+    order: -1;
   }
 
   .lp-right img {
@@ -79,9 +93,5 @@
 
   .lp-left h1 {
     font-size: 30px;
-  }
-
-  .lp-logo {
-    margin: auto;
   }
 }
