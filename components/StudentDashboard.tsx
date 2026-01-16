@@ -4,9 +4,9 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Navbar from "@/components/Navbar"
 import { getJoinedClasses } from "@/lib/fakeDB"
-import "./volunteer-dashboard.css"
+import "./student-dashboard.css"
 
-export default function VolunteerDashboard() {
+export default function StudentDashboard() {
   const router = useRouter()
   const [user, setUser] = useState<any>(null)
   const [kelas, setKelas] = useState<any[]>([])
@@ -31,26 +31,27 @@ export default function VolunteerDashboard() {
 
   return (
     <>
-      {/* ===== HERO SECTION ===== */}
-      <section className="student-hero">
-  <div className="container text-center hero-content">
-    <h1 className="hero-title">
-      <span className="text-black">Selamat Datang,</span>{" "}
-      <span className="text-white">Volunteer ✨</span>
-    </h1>
 
-    <p className="hero-subtitle">
-      Temukan kelas terbaik dan mulai perjalanan belajarmu hari ini.
-    </p>
+      {/* ===== HERO SISWA ===== */}
+      <section className="student-hero-wrapper">
+        <div className="student-hero-pill">
+          <h1 className="student-hero-title">
+            Halo, <span>{user.name}</span>!
+          </h1>
 
-    <button
-      className="btn hero-btn"
-      onClick={() => router.push("/kelas")}
-    >
-      Cari Kelas
-    </button>
-  </div>
-</section>
+          <p className="student-hero-subtitle">
+            Siap menjadi juara? Cari kelas-Mu sekarang!
+          </p>
+
+          <button
+            className="btn student-hero-btn"
+            onClick={() => router.push("/kelas")}
+          >
+            Cari kelas
+          </button>
+        </div>
+      </section>
+
     </>
   )
 }

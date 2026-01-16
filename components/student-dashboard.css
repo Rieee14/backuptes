@@ -1,0 +1,131 @@
+Siswa css
+/* =========================
+   HERO WRAPPER
+========================= */
+.student-hero-wrapper {
+  background-color: #d9fbff;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* =========================
+   HERO PILL
+========================= */
+.student-hero-pill {
+  width: 100%;
+  max-width: 1100px;
+  padding: 80px 20px;
+  border-radius: 140px;
+  background: linear-gradient(
+    180deg,
+    #f2b5ff 0%,
+    #8fc9ff 50%,
+    #58c6f0 100%
+  );
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: floatIn 1.2s ease-out;
+}
+
+/* =========================
+   HERO TEXT
+========================= */
+.student-hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0b1c2d;
+  margin-bottom: 12px;
+}
+
+.student-hero-title span {
+  color: #ffffff;
+}
+
+.student-hero-subtitle {
+  font-size: 1.15rem;
+  color: #0b1c2d;
+  margin-bottom: 32px;
+}
+
+/* =========================
+   HERO BUTTON
+========================= */
+.student-hero-btn {
+  background-color: #ffffff;
+  color: #0b1c2d;
+  padding: 14px 42px;
+  border-radius: 30px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  transition: all 0.3s ease;
+}
+
+.student-hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+}
+
+/* =========================
+   CONTENT
+========================= */
+.student-content {
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+/* =========================
+   CLASS CARD
+========================= */
+.student-class-card {
+  background-color: #f3f4f6;
+  padding: 18px 20px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.student-class-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .student-hero-pill {
+    padding: 60px 20px;
+    border-radius: 60px;
+  }
+
+  .student-hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-hero-title {
+    font-size: 1.9rem;
+  }
+
+  .student-hero-subtitle {
+    font-size: 1rem;
+  }
+}

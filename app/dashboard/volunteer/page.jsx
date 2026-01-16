@@ -7,10 +7,10 @@ import { BookOpen, Users, HandHeart, LogOut } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { getAllVolunteers } from "@/lib/volunteerDB"
-import StudentDashboard from "@/components/VolunteerDashboard"
+import VolunteerDashboard from "@/components/VolunteerDashboard"
 
 
-export default function VolunteerDashboard() {
+export default function Volunteer() {
   const router = useRouter()
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function VolunteerDashboard() {
   return (
     <>
       <Navbar1 />
-      <StudentDashboard />
+      <VolunteerDashboard />
       
     </>
   )
