@@ -36,7 +36,7 @@ export default function StudentDashboard() {
       <section className="student-hero-wrapper">
         <div className="student-hero-pill">
           <h1 className="student-hero-title">
-            Halo, <span>{user.name}</span>!
+            Halo, <span>{user.name}!</span>
           </h1>
 
           <p className="student-hero-subtitle">

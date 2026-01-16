@@ -43,7 +43,7 @@ html, body {
 }
 
 .hero-title span {
-  color: #0b1c2d;
+  color: #ffffff;
 }
 
 .hero-subtitle {
@@ -62,7 +62,7 @@ html, body {
   color: #5b5cff;
   padding: 16px 46px;
   border-radius: 18px;
-  font-weight: 600;
+  font-weight: 700;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
