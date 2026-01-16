@@ -1,7 +1,8 @@
-/* SECTION OVERRIDE GLOBAL BACKGROUND */
-/* FULL WIDTH BACKGROUND (LEWATI PARENT) */
+/* ===============================
+   FULL WIDTH BACKGROUND
+================================ */
 .section {
-  width: 1264px;
+  width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
@@ -12,15 +13,18 @@
   padding: 60px 0 80px;
 }
 
-
-/* CONTENT WRAPPER */
+/* ===============================
+   CONTENT WRAPPER
+================================ */
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* TITLE */
+/* ===============================
+   TITLE
+================================ */
 .title {
   font-size: 34px;
   font-weight: 800;
@@ -28,7 +32,9 @@
   color: #0b1c3d;
 }
 
-/* EMPTY STATE */
+/* ===============================
+   EMPTY STATE
+================================ */
 .emptyState {
   background: white;
   border: 2px dashed #9ca3af;
@@ -39,7 +45,9 @@
   color: #6b7280;
 }
 
-/* CARD */
+/* ===============================
+   CARD
+================================ */
 .card {
   background: white;
   border-radius: 22px;
@@ -48,28 +56,37 @@
   border: 2px solid #9ca3af;
 }
 
-/* HEADER */
+/* ===============================
+   HEADER
+================================ */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 }
 
-/* MATERI */
+/* ===============================
+   MATERI
+================================ */
 .materi {
   margin-top: 6px;
   font-size: 14px;
   color: #333;
 }
 
-/* RIGHT SIDE */
+/* ===============================
+   RIGHT SIDE
+================================ */
 .right {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* BUTTONS */
+/* ===============================
+   BUTTONS
+================================ */
 .start {
   background: #4f5cff;
   color: white;
@@ -90,7 +107,9 @@
   cursor: pointer;
 }
 
-/* DROPDOWN ARROW */
+/* ===============================
+   DROPDOWN ARROW
+================================ */
 .arrow {
   cursor: pointer;
   font-size: 18px;
@@ -100,4 +119,57 @@
 
 .open {
   transform: rotate(180deg);
+}
+
+/* =================================================
+   📱 MOBILE RESPONSIVE
+================================================= */
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 0 60px;
+  }
+
+  .title {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .right {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 12px;
+  }
+
+  .start,
+  .cancel {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .arrow {
+    font-size: 20px;
+  }
+}
+
+/* =================================================
+   📱 SMALL MOBILE
+================================================= */
+@media (max-width: 480px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .materi {
+    font-size: 13px;
+  }
 }
