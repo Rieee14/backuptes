@@ -1,0 +1,66 @@
+/* components/KelasSaya.module.css */
+
+.wrapper {
+  padding: 60px 40px;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #c9f3ff 40%,
+    #c9f3ff 100%
+  );
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f766e;
+  margin-bottom: 24px;
+}
+
+/* LIST CARD */
+.list {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+  width: 220px;
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+}
+
+.desc {
+  font-size: 11px;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.time {
+  font-size: 10px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+/* BUTTON */
+.button {
+  width: 100%;
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}

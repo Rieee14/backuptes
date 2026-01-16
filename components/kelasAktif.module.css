@@ -1,0 +1,103 @@
+/* SECTION OVERRIDE GLOBAL BACKGROUND */
+/* FULL WIDTH BACKGROUND (LEWATI PARENT) */
+.section {
+  width: 1264px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: 89vh;
+  background: linear-gradient(180deg, #d9fff3, #b8e0dc);
+  padding: 60px 0 80px;
+}
+
+
+/* CONTENT WRAPPER */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* TITLE */
+.title {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 28px;
+  color: #0b1c3d;
+}
+
+/* EMPTY STATE */
+.emptyState {
+  background: white;
+  border: 2px dashed #9ca3af;
+  border-radius: 22px;
+  padding: 26px;
+  text-align: center;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 22px;
+  padding: 18px 24px;
+  margin-bottom: 18px;
+  border: 2px solid #9ca3af;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* MATERI */
+.materi {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* RIGHT SIDE */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* BUTTONS */
+.start {
+  background: #4f5cff;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel {
+  background: #ff3b3b;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* DROPDOWN ARROW */
+.arrow {
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.open {
+  transform: rotate(180deg);
+}

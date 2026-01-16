@@ -13,7 +13,7 @@ export default function StatsSection() {
 
         <div className="stat-item">
           <h3>80+</h3>
-          <p>Volunteer Aktif</p>
+          <p>Relawan Aktif</p>
         </div>
 
         <div className="stat-item">

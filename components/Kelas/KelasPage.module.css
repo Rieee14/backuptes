@@ -1,0 +1,57 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+.cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 48px;
+}
+
+.ctaText {
+  display: flex;
+  flex-direction: column;
+}
+
+.ctaTitle {
+  margin: 0;
+  font-weight: 600;
+}
+
+.ctaDesc {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.requestBtn {
+  background: #4f46e5;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.empty {
+  color: #94a3b8;
+}

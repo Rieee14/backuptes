@@ -75,7 +75,7 @@ export default function RegisterStudent() {
               className="register-link"
               onClick={() => router.push("/dashboard/siswa/login")}
             >
-              Login
+              Masuk
             </span>
           </div>
         </div>

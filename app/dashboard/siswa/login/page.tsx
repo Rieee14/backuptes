@@ -1,3 +1,4 @@
+// app/dashboard/siswa/login/page.tsx
 "use client"
 import { loginStudent } from "@/lib/studentDB"
 import { useRouter } from "next/navigation"
@@ -21,7 +22,7 @@ export default function LoginStudent() {
       return
     }
 
-    localStorage.setItem("EDUCARE_ROLE", "student")
+    localStorage.setItem("EDUCARE_ROLE", "siswa")
     localStorage.setItem("EDUCARE_USER", JSON.stringify(user))
 
     router.push("/dashboard/siswa")
@@ -37,7 +38,7 @@ export default function LoginStudent() {
             untuk membantu siswa berkembang bersama.
           </p>
 
-          <label>Email address</label>
+          <label>Alamat Email</label>
           <input
             placeholder="Email"
             value={email}
@@ -45,11 +46,11 @@ export default function LoginStudent() {
             onKeyDown={e => e.key === "Enter" && login()}
           />
 
-          <label>Password</label>
+          <label>Kata Sandi</label>
           <div className="pass-wrap">
             <input
               type={show ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Kata Sandi"
               value={password}
               onChange={e => setPassword(e.target.value)}
               onKeyDown={e => e.key === "Enter" && login()}
@@ -70,9 +71,9 @@ export default function LoginStudent() {
             </span>
           </div>
 
-          <button onClick={login}>Log in</button>
+          <button onClick={login}>Masuk</button>
 
-          <span className="forgot">Forgot your password?</span>
+          <span className="forgot">Lupa kata sandi?</span>
 
           <div className="register">
             <span>Belum punya akun?</span>

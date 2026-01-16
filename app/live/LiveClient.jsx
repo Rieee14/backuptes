@@ -254,7 +254,7 @@ export default function LiveClient() {
                   onClick={joinLive}
                   className="col-span-3 bg-indigo-600 hover:bg-indigo-700 py-3 rounded-lg font-semibold transition-colors"
                 >
-                  🎥 Join Live
+                  🎥 Gabung siaran
                 </button>
               ) : (
                 <>

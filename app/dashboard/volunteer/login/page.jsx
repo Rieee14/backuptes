@@ -43,7 +43,7 @@ export default function VolunteerLogin() {
             untuk membantu siswa berkembang.
           </p>
 
-          <label>Email</label>
+          <label>Alamat Email</label>
           <input
             placeholder="Email"
             value={email}
@@ -51,11 +51,11 @@ export default function VolunteerLogin() {
             onKeyDown={e => e.key === "Enter" && login()}
           />
 
-          <label>Password</label>
+          <label>Kata Sandi</label>
           <div className="pass-wrap">
             <input
               type={show ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Kata Sandi"
               value={password}
               onChange={e => setPassword(e.target.value)}
               onKeyDown={e => e.key === "Enter" && login()}
@@ -77,11 +77,11 @@ export default function VolunteerLogin() {
           </div>
 
           <button onClick={login} disabled={loading}>
-            {loading ? "Memproses..." : "Masuk Dashboard"}
+            {loading ? "Memproses..." : "Masuk"}
           </button>
 
           <div className="register">
-            <span>Belum jadi volunteer?</span>
+            <span>Belum jadi Relawan?</span>
             <span
               className="register-link"
               onClick={() => router.push("/dashboard/volunteer/register")}

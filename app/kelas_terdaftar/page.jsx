@@ -1,3 +1,5 @@
+// app/kelas_terdaftar/page.jsx
+
 "use client"
 
 import Navbar from "@/components/Navbar"

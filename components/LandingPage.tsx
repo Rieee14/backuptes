@@ -13,7 +13,7 @@ export default function LandingPage() {
           di Ruang Diskusi
         </h1>
 
-        <button className="lp-btn">LEARN MORE</button>
+        <button className="lp-btn">LEBIH LANJUT</button>
 
       </div>
 

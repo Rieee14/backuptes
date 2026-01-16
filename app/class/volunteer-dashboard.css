@@ -1,0 +1,88 @@
+.vd-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px;
+}
+
+.vd-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.vd-subtitle {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* CARD */
+.vd-card {
+  border: 2px solid #aaa;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* SUMMARY */
+.vd-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* BODY */
+.vd-body {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+/* STUDENT */
+.student-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+
+.student-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* BUTTONS */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+.btn-start {
+  background: #4f5cff;
+  color: white;
+}
+
+.btn-finish {
+  background: #ff3b3b;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.btn-acc {
+  background: #2ecc71;
+  color: white;
+}
+
+.btn-reject {
+  background: #e74c3c;
+  color: white;
+}

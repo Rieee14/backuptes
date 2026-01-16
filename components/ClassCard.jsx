@@ -17,7 +17,7 @@ export default function ClassCard({
           href={`/live?class=${id}`}
           className="block text-center bg-emerald-600 text-white py-2 rounded-xl"
         >
-          Join Live
+          Gabung Siaran
         </Link>
       ) : (
         <Link

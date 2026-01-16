@@ -121,7 +121,7 @@ export default function RegisterVolunteer() {
               className="register-link"
               onClick={() => router.push("/dashboard/volunteer/login")}
             >
-              Login
+              Masuk
             </span>
           </div>
         </div>

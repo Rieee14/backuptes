@@ -50,7 +50,7 @@ export default function Detail() {
 
         <div className="border p-6 rounded-xl mb-8">
           <h3 className="font-semibold mb-2">Pengajar</h3>
-          <p>Volunteer EduCare</p>
+          <p>Relawan Ruang Diskusi</p>
         </div>
 
         {isJoined ? (
@@ -58,7 +58,7 @@ export default function Detail() {
             href={`/live?class=${kelas.id}&role=siswa`}
             className="inline-block bg-emerald-600 text-white px-6 py-3 rounded-xl"
           >
-            Join Live
+            Gabung Siaran
           </Link>
         ) : (
           <button

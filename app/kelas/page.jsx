@@ -1,3 +1,5 @@
+// app/kelas/page.jsx
+
 "use client"
 
 import Navbar from "@/components/Navbar"
@@ -31,7 +33,7 @@ export default function Kelas() {
             <p className="text-sm text-slate-600">Ajukan kebutuhan belajarmu</p>
           </div>
           <a href="/request" className="bg-indigo-600 text-white px-6 py-3 rounded-xl">
-            + Request
+            + Permintaan
           </a>
         </div>
 

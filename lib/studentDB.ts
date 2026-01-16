@@ -1,3 +1,5 @@
+// lib/studentDB.ts
+
 export type Student = {
   id: string
   name: string
