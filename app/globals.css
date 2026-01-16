@@ -34,7 +34,6 @@ body {
 ========================= */
 
 h1, h2, h3, h4 {
-  color: var(--edu-text);
   letter-spacing: -0.02em;
 }
 

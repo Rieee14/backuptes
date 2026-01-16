@@ -2,9 +2,9 @@ import "./globals.css"
 import "@/styles/layout.css"
 
 export const metadata = {
-  title: "Sekolah Relawan",
+  title: "Ruang Diskusi",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo.png",
     apple: "/logo.png",
   },
 }

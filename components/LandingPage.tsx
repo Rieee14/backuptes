@@ -6,10 +6,7 @@ export default function LandingPage() {
     <main className="lp-rooti">
 
       <div className="lp-left">
-        <div className="lp-logo">
-          <span className="lp-logo-main">RUANG</span>
-          <span className="lp-logo-sub">DISKUSI.ID</span>
-        </div>
+       
 
         <h1>
           Selamat Datang <br />

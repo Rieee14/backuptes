@@ -23,7 +23,7 @@ export default function StudentDashboard() {
   const logout = () => {
     localStorage.removeItem("EDUCARE_USER")
     alert("Berhasil logout")
-    router.push("/login")
+    router.push("/dashboard/siswa/login")
   }
 
   if (!user) return null

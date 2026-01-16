@@ -1,0 +1,142 @@
+/* =========================
+   HERO
+========================= */
+/* =========================
+   GLOBAL FIX (WAJIB)
+========================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.student-hero {
+  min-height: 88vh;
+  background:linear-gradient(135deg, #50FFB0, #008C9B);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;   /* ⬅️ KUNCI */
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0b1c2d;
+  margin-bottom: 16px;
+}
+
+.hero-name {
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #1f2937;
+  opacity: 0.85;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.hero-btn {
+  background-color: #ffffff;
+  color: #6b5cff;
+  padding: 14px 48px;
+  border-radius: 22px;
+  font-weight: 600;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   CONTENT
+========================= */
+.student-content {
+  padding-top: 48px;
+  padding-bottom: 60px;
+}
+
+.section-title {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.class-card {
+  background-color: #f3f4f6;
+  padding: 22px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.class-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-btn {
+    padding: 12px 36px;
+  }
+
+  .class-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.9rem;
+  }
+}
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}

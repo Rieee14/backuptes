@@ -8,9 +8,11 @@ import VisionSection from "@/components/VisionSection"
 import MissionSection from "@/components/MissionSection"
 import StatsSection from "@/components/StatsSection"
 import HeroSection from "@/components/HeroSection"
+import Navbar2 from "@/components/Navbar2"
 export default function Home() {
   return (
     <>
+        <Navbar2 />
         <LandingPage />
         <HeroSection />
         <RolePicker />
