@@ -38,7 +38,7 @@ export default function VolunteerDashboard() {
       <section className="volunteer-hero">
         <div className="hero-content">
           <h1 className="hero-title">
-            Selamat Datang, <span>Volunteer ✨</span>
+            Selamat Datang, <span>Relawan ✨</span>
           </h1>
 
           <p className="hero-subtitle">
